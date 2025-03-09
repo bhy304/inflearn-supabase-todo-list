@@ -1,12 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { Checkbox, IconButton } from 'node_modules/@material-tailwind/react'
+import { Checkbox, IconButton } from '@material-tailwind/react'
+import { useMutation } from '@tanstack/react-query'
 
-export default function Todo() {
+export default function Todo({ todo }) {
   const [completed, setCompleted] = useState(false)
-  const [isEditing, setIsEditing] = useState(false)
-  const [title, setTitle] = useState('')
+  const [isEditing, setIsEditing] = useState(todo.completed)
+  const [title, setTitle] = useState(todo.title)
+
+  const updateTodoMutation = useMutation({})
 
   return (
     <div className='w-full flex items-center gap-1'>
