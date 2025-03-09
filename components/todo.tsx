@@ -9,7 +9,7 @@ import dayjs from 'node_modules/dayjs'
 
 export default function Todo({ todo }) {
   const [completed, setCompleted] = useState(todo.completed)
-  const [isEditing, setIsEditing] = useState(todo.completed)
+  const [isEditing, setIsEditing] = useState(false)
   const [title, setTitle] = useState(todo.title)
 
   const updateTodoMutation = useMutation({
