@@ -44,7 +44,11 @@ export async function updateTodo(todo: TodoRowUpdate) {
   const supabase = await createServerSupabaseClient()
   const { data, error } = await supabase
     .from('todo')
-    .update({ ...todo, updated_at: new Date().toISOString() })
+    .update({
+      ...todo,
+      updated_at: new Date().toISOString(),
+      completed_at: todo.completed ? new Date().toISOString() : null,
+    })
     .eq('id', todo.id)
 
   if (error) {

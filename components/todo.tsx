@@ -54,6 +54,11 @@ export default function Todo({ todo }) {
         <span className='text-xs text-gray-500'>
           생성일 : {dayjs(todo.created_at).format('YYYY.MM.DD HH:mm:ss')}
         </span>
+        {completed && todo.completed_at && (
+          <span className='text-xs text-gray-500'>
+            완료일 : {dayjs(todo.created_at).format('YYYY.MM.DD HH:mm:ss')}
+          </span>
+        )}
       </div>
       {isEditing ? (
         <IconButton
