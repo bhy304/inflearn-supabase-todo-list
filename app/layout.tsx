@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "config/material-tailwind-theme-provider"
 import ReactQueryClientProvider from "config/ReactQueryClientProvider"
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ['100', '300', '400', '500', '700', '900'],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,7 +33,7 @@ export default function RootLayout({
               referrerPolicy='no-referrer'
             />
           </head>
-          <body className={inter.className}>{children}</body>
+          <body className={poppins.className}>{children}</body>
         </html>
       </ThemeProvider>
     </ReactQueryClientProvider>
