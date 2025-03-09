@@ -5,6 +5,7 @@ import { Checkbox, IconButton, Spinner } from '@material-tailwind/react'
 import { useMutation } from '@tanstack/react-query'
 import { deleteTodo, updateTodo } from 'actions/todo-action'
 import { queryClient } from 'config/ReactQueryClientProvider'
+import dayjs from 'node_modules/dayjs'
 
 export default function Todo({ todo }) {
   const [completed, setCompleted] = useState(todo.completed)
@@ -49,6 +50,11 @@ export default function Todo({ todo }) {
       ) : (
         <p className={`flex-1 ${completed && 'line-through'}`}>{title}</p>
       )}
+      <div className='flex flex-col items-start justify-center mx-3'>
+        <span className='text-xs text-gray-500'>
+          생성일 : {dayjs(todo.created_at).format('YYYY.MM.DD HH:mm:ss')}
+        </span>
+      </div>
       {isEditing ? (
         <IconButton
           onClick={async () => {
@@ -65,7 +71,6 @@ export default function Todo({ todo }) {
           <i className='fas fa-pen' />
         </IconButton>
       )}
-
       <IconButton onClick={() => deleteTodoMutation.mutate()}>
         {deleteTodoMutation.isPending ? (
           <Spinner />
